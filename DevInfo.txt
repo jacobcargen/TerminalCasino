@@ -1,0 +1,6 @@
+﻿! Only allow keypresses after asking and only a catch for additional acidental presses
+
+* Add poker AI
+* Add a hand checker for who wins in poker
+* Auto-Stand on 21
+* Add blackjack splits
