@@ -56,18 +56,15 @@ namespace TerminalCasino
                 string turnNotify = string.Empty;
                 string decision, dealerString = "    ";
                 if (player == dealer) dealerString = "[D] ";
+                // if the player has folded
+                if (player.hasFolded)
+                {
+                    decision = "Folded";
+                }
                 if (player == currentPlayerTurn)
                 {
-                    // if the player has folded
-                    if (player.hasFolded)
-                    {
-                        decision = "Folded";
-                    }
-                    else
-                    {
-                        turnNotify = "<<<<<<<<<<<<<<<<";
-                        decision = "...";
-                    }
+                    turnNotify = "<<<---<<<---<<<";
+                    decision = "...";
                 }
                 else
                 {
@@ -84,7 +81,10 @@ namespace TerminalCasino
                             default: throw new Exception("NOT VALID!");
                         }
                     }
-                    else decision = "...";
+                    else // If choice NONE
+                    {
+                        decision = "...";
+                    }
                 }
 
                 foreach (Card card in player.hand)
@@ -703,7 +703,7 @@ namespace TerminalCasino
         /// <returns>A list of available choices</returns>
         private List<Choice> GetAvailableChoices(Player player)
         {
-            List<Choice> choices = new List<Choice>() { Choice.Fold };
+            List<Choice> choices = new List<Choice>();
 
             // Has money
             if (player.money > 0)
@@ -711,7 +711,9 @@ namespace TerminalCasino
                 // If the player needs to match
                 if (player.currentRaise < raiseMatchAmt)
                 {
+                    choices.Add(Choice.Fold);
                     int payAmt = raiseMatchAmt - player.currentRaise;
+
                     // Player has only enough to call
                     if (player.money == payAmt)
                     {
@@ -724,7 +726,9 @@ namespace TerminalCasino
                     {
                         //raise,call
                         choices.Add(Choice.Call);
-                        if (!player.hasCheckedCalledRaised) choices.Add(Choice.Raise);
+                        if (!player.hasCheckedCalledRaised) 
+                            choices.Add(Choice.Raise);
+
                         return choices;
                     }
                     // Player has less than the required amount

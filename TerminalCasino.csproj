@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>TerminalCasino</RootNamespace>
     <AssemblyName>TerminalCasino</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -56,6 +56,7 @@
     <Compile Include="Poker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roulette.cs" />
     <Compile Include="Saving.cs" />
     <Compile Include="SevenCardStud.cs" />
     <Compile Include="Tools.cs" />

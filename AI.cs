@@ -23,7 +23,6 @@ namespace TerminalCasino
 
             int index = random.Next(availableChoices.Count);
             choice = availableChoices[index];
-
             return choice;
         }
     }

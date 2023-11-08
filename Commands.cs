@@ -20,7 +20,8 @@ namespace TerminalCasino
             // Games
             //new Command("2card", TwoCard, "Start playing two card stud poker."),
             new Command("7card", SevenCard, "Start playing seven card stud poker."),
-            new Command("21", BlackJack, "Start playing blackjack.")
+            new Command("21", BlackJack, "Start playing blackjack."),
+            new Command("roulette", Roulette, "Start playing roulette.")
         };
 
 
@@ -231,7 +232,15 @@ Type ""quit"" to exit the program");
             Program.StopMenuMusic();
             new SevenCardStud().Play(Program.user);
         }
-
+        /// <summary>
+        /// Call this to start roulette
+        /// </summary>
+        public static void Roulette()
+        {
+            Clear();
+            Program.StopMenuMusic();
+            new Roulette().Play(Program.user);
+        }
         /// <summary>
         /// Call this to play blackjack
         /// </summary>
